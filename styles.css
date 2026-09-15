@@ -1,0 +1,660 @@
+/* =============================================================
+   Why Small Businesses Fail — styles
+   Palette derived from ui-ux-pro-max colors.csv #185
+   (Research Lab / University Department), shifted warmer-neutral.
+   Type: Newsreader (typography.csv #14) + Lexend (#16).
+   ============================================================= */
+
+:root {
+  /* colour */
+  --paper:        #FCFCFA;
+  --ink:          #16202B;
+  --ink-soft:     #4A5764;
+  --rule:         #E2E3DD;
+  --verified:     #1F5673;
+  --disputed:     #8A6A1F;
+  --pressure:     #D89A6A;
+  --growth:       #2C5C40;
+  --panel:        #F5EEE1;
+
+  /* source-link interaction washes */
+  --src-hover:        rgba(31, 86, 115, 0.08);
+  --src-active:       rgba(31, 86, 115, 0.14);
+  --src-hover-dark:   rgba(156, 196, 221, 0.14);
+  --src-active-dark:  rgba(156, 196, 221, 0.22);
+
+  /* on the inverted slab */
+  --dark-text:    #FCFCFA;
+  --dark-muted:   #A8B4C0;
+  --dark-link:    #9CC4DD;
+  --dark-rule:    #2E3B4A;
+
+  /* type */
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans:  "Lexend", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+
+  --fs-sm:    0.875rem;
+  --fs-base:  1.0625rem;
+  --fs-lead:  clamp(1.0625rem, 1rem + 0.6vw, 1.3125rem);
+  --fs-h1:    clamp(2.5rem, 1.5rem + 4.5vw, 4.5rem);
+  --fs-h2:    clamp(1.625rem, 1.1rem + 2.6vw, 2.875rem);
+  --fs-h3:    clamp(1.125rem, 1rem + 0.8vw, 1.4375rem);
+  --fs-stat:  clamp(2.5rem, 1.6rem + 4.4vw, 4rem);
+  --fs-hero:  clamp(3.25rem, 1.2rem + 12vw, 8.5rem);
+  --fs-press: clamp(1.375rem, 1.1rem + 1.4vw, 2rem);
+
+  /* space */
+  --s1: 0.25rem;  --s2: 0.5rem;   --s3: 0.75rem;  --s4: 1rem;
+  --s5: 1.5rem;   --s6: 2rem;     --s7: 3rem;     --s8: 4rem;   --s9: 6rem;
+
+  --gutter: 1.25rem;
+  --measure: 68ch;
+}
+
+@media (min-width: 600px) { :root { --gutter: 2rem; } }
+
+/* ---------- reset ------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; }
+
+h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.15; }
+p, dl, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+a { color: var(--verified); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+
+:focus-visible {
+  outline: 3px solid var(--verified);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.section--dark :focus-visible { outline-color: var(--dark-link); }
+
+/* ---------- shell ------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.site-header {
+  border-bottom: 1px solid var(--rule);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 60px;
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  color: var(--ink-soft);
+}
+
+.lang-icon { flex: none; }
+
+.lang-btn {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--s3);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: none;
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.lang-btn.is-active {
+  border-color: var(--rule);
+  background: #fff;
+  color: var(--ink);
+}
+
+.lang-btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+/* ---------- page title -------------------------------------- */
+
+.page-title {
+  font-family: var(--serif);
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  max-width: 22ch;
+  text-wrap: balance;
+  padding-block: var(--s7) var(--s6);
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (min-width: 600px) { .page-title { max-width: 26ch; } }
+
+/* ---------- sections ---------------------------------------- */
+
+.section { padding-block: var(--s8); }
+.section + .section { border-top: 1px solid var(--rule); }
+.section--dark + .section,
+.section + .section--dark,
+.section--myths + .section { border-top: 0; }
+
+@media (min-width: 900px) {
+  .section { padding-block: var(--s9); }
+}
+
+.display {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+@media (min-width: 600px) { .display { max-width: 26ch; } }
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--ink-soft);
+  max-width: var(--measure);
+  margin-top: var(--s5);
+}
+
+.closer {
+  max-width: var(--measure);
+  margin-top: var(--s6);
+}
+
+/* ---------- justified body copy ------------------------------ */
+
+/* No hyphenation (removed on request), so justify only gets used
+   where the line is long enough on its own that the stretched
+   word-gaps disappear into the whitespace — no mid-word break to
+   fall back on if a line runs short of one. That needs a higher
+   bar than it would with hyphenation: comfortably 60+ characters
+   per line. Lead-ins, closers and the founder block are full-width
+   single-column prose capped at 68ch; they only clear ~60 chars
+   at 768px and up (roughly 35-39 below that), so they justify from
+   768px on and stay left below it. Myth-card paragraphs never
+   clear that bar at all: the two-column card grid caps them at
+   roughly 49 characters per line even at this page's widest layout
+   (.wrap tops out at 64rem regardless of screen size), so they
+   stay left unconditionally rather than flipping at a breakpoint. */
+.lead,
+.closer,
+.transition,
+.founder p {
+  text-align: left;
+}
+
+.myth > p:not(.myth-claim):not(.myth-verdict) {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .lead,
+  .closer,
+  .transition,
+  .founder p {
+    text-align: justify;
+  }
+}
+
+/* ---------- 1. myths ---------------------------------------- */
+
+/* Section 1 sets up the argument rather than delivering a reveal
+   like sections 2-4, so its headline reads quieter than both the
+   page h1 above it and the .display headlines that follow it. */
+/* Full-bleed warm panel — sets the two disputed claims apart from
+   the plain-paper data sections that follow, like specimens laid
+   out for examination rather than another white page of prose. */
+.section--myths {
+  background: var(--panel);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+}
+
+.section--myths .display {
+  font-family: var(--sans);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  max-width: 42ch;
+}
+
+.myths {
+  display: grid;
+  gap: var(--s5);
+  margin-top: var(--s7);
+}
+
+@media (min-width: 800px) {
+  .myths { grid-template-columns: 1fr 1fr; gap: var(--s6); }
+}
+
+.myth {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--disputed);
+  padding: var(--s5);
+  background: #fff;
+}
+
+/* One deliberate typographic gesture per card: the number itself,
+   oversized and cropped, sitting behind the claim as pure texture.
+   Same typeface as the rest of the page — no new visual language. */
+.myth-ghost {
+  position: absolute;
+  z-index: -1;
+  top: -0.12em;
+  right: -0.04em;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(6rem, 3rem + 14vw, 11rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--rule);
+  pointer-events: none;
+  user-select: none;
+}
+
+.myth:nth-child(2) { border-left-color: var(--verified); }
+
+.myth p + p { margin-top: var(--s4); }
+
+.myth-claim {
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+  font-size: 1.125rem;
+  color: var(--disputed);
+}
+
+.myth:nth-child(2) .myth-claim { color: var(--verified); }
+
+.myth-mark { flex: none; margin-top: 0.28em; }
+
+/* The claim is a quote the reader needs to recognise, so it stays
+   fully legible — no strikethrough. The verdict (disputed/real-but-
+   different) is carried by the icon shape, this accent color and
+   the border-left, plus the verdict line spelling it out below. */
+.myth-quote {
+  color: var(--ink);
+  font-style: italic;
+}
+
+.myth-verdict {
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--ink);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s4);
+}
+
+/* ---------- 2. stats ---------------------------------------- */
+
+.stats {
+  display: grid;
+  gap: var(--s5);
+  margin-top: var(--s7);
+}
+
+@media (min-width: 600px) { .stats { grid-template-columns: 1fr 1fr; gap: var(--s6); } }
+@media (min-width: 960px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+
+.stat { border-top: 2px solid var(--ink); padding-top: var(--s3); }
+
+.stat-num {
+  font-family: var(--sans);
+  font-size: var(--fs-stat);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--verified);
+}
+
+.stat-label {
+  margin: var(--s3) 0 0;
+  font-size: var(--fs-sm);
+  font-family: var(--sans);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ---------- 3. inverted slab -------------------------------- */
+
+.section--dark {
+  background: var(--ink);
+  color: var(--dark-text);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+}
+
+.section--dark a { color: var(--dark-link); }
+
+.hero-num {
+  font-family: var(--sans);
+  font-size: var(--fs-hero);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  margin-top: var(--s7);
+  color: var(--pressure);
+}
+
+.hero-caption {
+  font-size: var(--fs-lead);
+  color: var(--dark-muted);
+  max-width: 46ch;
+  margin-top: var(--s5);
+}
+
+.subnums {
+  display: grid;
+  gap: var(--s5);
+  margin-top: var(--s6);
+  padding-top: var(--s5);
+  border-top: 1px solid var(--dark-rule);
+}
+
+@media (min-width: 600px) { .subnums { grid-template-columns: 1fr 1fr; } }
+
+.subnum dt {
+  font-family: var(--sans);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--pressure);
+}
+
+.subnum dd {
+  margin: var(--s2) 0 0;
+  font-size: var(--fs-sm);
+  font-family: var(--sans);
+  color: var(--dark-muted);
+}
+
+/* ---------- 3b. buffer day-scale ----------------------------- */
+
+.buffer-scale-figure { margin-top: var(--s6); }
+
+.buffer-scale { display: block; width: 100%; height: auto; }
+
+.buffer-scale .scale-base { stroke: var(--dark-rule); stroke-width: 1.5; }
+.buffer-scale .scale-ticks line { stroke: var(--dark-rule); stroke-width: 1; }
+
+.buffer-scale .scale-endlabels text {
+  font-family: var(--sans);
+  font-size: 13px;
+  fill: var(--dark-muted);
+}
+
+.buffer-scale .end-label--right { text-anchor: end; }
+
+.buffer-scale .mark--minor { stroke: var(--dark-muted); }
+.buffer-scale circle.mark--minor { fill: var(--ink); stroke: var(--dark-muted); stroke-width: 1.5; }
+
+.buffer-scale .mark--main { stroke: var(--pressure); }
+.buffer-scale circle.mark--main { fill: var(--pressure); stroke: none; }
+
+.buffer-scale .mark-label {
+  font-family: var(--sans);
+  font-size: 15px;
+  text-anchor: middle;
+  fill: var(--dark-muted);
+}
+
+.buffer-scale .mark-label--main {
+  fill: var(--pressure);
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.buffer-scale-caption {
+  margin-top: var(--s3);
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  color: var(--dark-muted);
+}
+
+.transition {
+  max-width: var(--measure);
+  margin-top: var(--s7);
+  font-size: var(--fs-lead);
+}
+
+.pressure { margin-top: var(--s5); }
+
+.press {
+  display: grid;
+  gap: var(--s2);
+  padding-block: var(--s5);
+  border-bottom: 1px solid var(--dark-rule);
+}
+
+@media (min-width: 760px) {
+  .press {
+    grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr);
+    gap: var(--s6);
+    align-items: baseline;
+  }
+}
+
+.press dt {
+  font-family: var(--sans);
+  font-size: var(--fs-press);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--pressure);
+}
+
+.press dd { margin: 0; color: var(--dark-muted); max-width: 56ch; }
+
+.section--dark .closer { color: var(--dark-text); }
+
+/* ---------- 4. chart ---------------------------------------- */
+
+.chart-figure { margin: var(--s7) 0 0; }
+
+.chart { display: block; width: 100%; height: auto; }
+
+.chart .grid line { stroke: var(--rule); stroke-width: 1; }
+
+.chart .axis-y text,
+.chart .axis-x text {
+  font-family: var(--sans);
+  font-size: 15px;
+  fill: var(--ink-soft);
+}
+
+.chart .axis-y text { text-anchor: end; }
+.chart .axis-x text { text-anchor: middle; }
+
+.chart-line {
+  fill: none;
+  stroke: var(--verified);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-dots circle { fill: var(--paper); stroke: var(--verified); stroke-width: 2.5; }
+
+@media (max-width: 599px) { .chart .tick-minor { display: none; } }
+
+/* line-draw: only applied once JS has measured the polyline */
+.chart.is-primed .chart-line { stroke-dashoffset: var(--dash); }
+.chart.is-drawn  .chart-line { stroke-dashoffset: 0; transition: stroke-dashoffset 1500ms cubic-bezier(.22,.61,.36,1); }
+
+.years {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s3) var(--s5);
+  margin-top: var(--s6);
+  padding-top: var(--s5);
+  border-top: 1px solid var(--rule);
+}
+
+@media (min-width: 700px) { .years { grid-template-columns: repeat(5, 1fr); } }
+
+.year dt {
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+}
+
+.year dd {
+  margin: var(--s1) 0 0;
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+}
+
+.year dd b {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.015em;
+  color: var(--verified);
+}
+
+.founder {
+  margin-top: var(--s8);
+  padding-top: var(--s6);
+  border-top: 2px solid var(--ink);
+  max-width: var(--measure);
+}
+
+.founder h3 { font-size: var(--fs-h3); max-width: 30ch; color: var(--growth); }
+.founder p { margin-top: var(--s4); }
+
+.final { font-size: var(--fs-lead); color: var(--growth); }
+
+/* ---------- sources ----------------------------------------- */
+
+.src {
+  margin-top: var(--s7);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 78ch;
+}
+
+.section--dark .src { border-top-color: var(--dark-rule); color: var(--dark-muted); }
+
+.src > * + * { margin-top: var(--s3); }
+
+/* The whole citation is the link — organization and document stay
+   on screen, only the raw URL moves into href. Padding is pulled
+   back out with a negative margin so the text still lines up with
+   the rest of the page; the hover/focus wash bleeds slightly past
+   it, reading as one solid, generously-sized click target. */
+.src-link {
+  display: block;
+  min-height: 44px;
+  padding: var(--s2) var(--s3);
+  margin-inline: calc(var(--s3) * -1);
+  border-radius: 3px;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.18em;
+  transition: color 150ms ease, background-color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.src-link:hover {
+  color: var(--verified);
+  text-decoration-color: var(--verified);
+  background-color: var(--src-hover);
+}
+
+.src-link:active { background-color: var(--src-active); }
+
+.section--dark .src-link { text-decoration-color: var(--dark-rule); }
+
+.section--dark .src-link:hover {
+  color: var(--dark-link);
+  text-decoration-color: var(--dark-link);
+  background-color: var(--src-hover-dark);
+}
+
+.section--dark .src-link:active { background-color: var(--src-active-dark); }
+
+.src-icon {
+  margin-left: 0.35em;
+  vertical-align: -0.15em;
+  transition: transform 150ms ease;
+}
+
+.src-link:hover .src-icon { transform: translate(1px, -1px); }
+
+.note { font-style: italic; }
+
+/* ---------- footer ------------------------------------------ */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--s6);
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+}
+
+.footer-srcs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--s5);
+}
+
+.footer-srcs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.footer-date { margin-top: var(--s3); }
+
+/* ---------- motion preference ------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .chart.is-primed .chart-line,
+  .chart.is-drawn .chart-line {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
